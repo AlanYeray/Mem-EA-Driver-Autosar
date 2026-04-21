@@ -2,6 +2,15 @@
 
 Implementation of the **EEPROM Abstraction (EA)** module following the AUTOSAR Classic Platform standard. This driver provides a uniform interface to access EEPROM data, abstracting the underlying memory hardware through the Memory Access (MemAcc) and Memory Interface (MemIf) layers.
 
+### Problem
+The AUTOSAR memory stack requires an abstraction layer between the application logic and the microcontroller's internal EEPROM memory. Implementing this layer correctly is critical to system reliability.
+
+### Solution
+Implementation of the AUTOSAR EA (EEPROM Abstraction) module from scratch in C on the NXP S32K144, acting as the lower layer of the MemIF interface and directly managing internal memory operations.
+
+### Result
+Enables the AUTOSAR stack to access memory in a standardized and portable manner, separating business logic from the physical details of the hardware.
+
 ## Overview
 
 The EA module sits between the **NvM (NVRAM Manager)** and the low-level **MemAcc/Mem_43_EEP** drivers in the AUTOSAR memory stack. It manages logical block addressing, read/write operations, block invalidation, and immediate data block erasure for non-volatile storage on NXP S32K1xx microcontrollers.
